@@ -1,11 +1,21 @@
 const inquirer = require("inquirer");
+const mysql = require("mysql2");
+require("dotenv").config();
+
+const connection = mysql.createConnection({
+    host: 'localhost',
+    PORT: 3001,
+    user: 'root',
+    password: process.env.MYSQL_PW,
+    database: 'work_db'
+});
 
 const questions = [
     {
         type: "list",
         name: "options",
         message: "What would you like to do?",
-        choices: ["View All Employess", "Add Employee", "Update Employee Role", "Add Role", "View All Departments", "Add Department", "Quit"]
+        choices: ["View All Employess", "Add Employee", "Update Employee Role", "Add Role", "View All Departments", "Add Department", "Delete", "Quit"]
 
     },
     {
@@ -68,6 +78,30 @@ const questions = [
         message: "Which role do you want to assign the selected employee?",
         choices: [available roles]
     },
+    {
+        type: "list",
+        name: "delete",
+        message: "What would you like to delete?",
+        choices: ["Department", "Role", "Employee"]
+    },
+    {
+        type: "list",
+        name: "delete-dept",
+        message: "Which department would you like to delete?",
+        choices: []
+    },
+    {
+        type: "list",
+        name: "delete-role",
+        message: "Which role would you like to delete?",
+        choices: [""]
+    },
+    {
+        type: "list",
+        name: "delete-employee",
+        message: "Which employee would you like to delete?",
+        choices: [""]
+    }
 ]
 
 // View all employes, view all departments should show table of info
