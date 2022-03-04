@@ -1,4 +1,5 @@
 const inquirer = require("inquirer");
+const conTable = require("console.table");
 const mysql = require("mysql2");
 require("dotenv").config();
 
@@ -15,8 +16,15 @@ const questions = [
         type: "list",
         name: "options",
         message: "What would you like to do?",
-        choices: ["View All Employess", "Add Employee", "Update Employee Role", "Add Role", "View All Departments", "Add Department", "Delete", "Quit"]
-
+        choices: [
+            "View All Employess", 
+            "Add Employee", 
+            "Update Employee Role", 
+            "Add Role", 
+            "View All Departments", 
+            "Add Department", 
+            "Delete Department, Role, or Employee", 
+            "Quit"]
     },
     {
         type: "input",
