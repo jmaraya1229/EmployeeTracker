@@ -12,6 +12,6 @@
 ### Usage Walkthrough
 
 ## Technologies Used
-* 
-* 
+* inquirer
+* mysql2
 
