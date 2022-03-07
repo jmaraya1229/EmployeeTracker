@@ -163,7 +163,31 @@ const addEmployee = () => {
 
 // -------------- Delete Employee --------------
 
-// 
+// -------------- View All Roles --------------
+const viewAllRoles = () => {
+    let sql = 
+    `SELECT role.id, role.title, department.department_name AS department
+    FROM role
+    INNER JOIN department ON role.department_id = department.id`;
+    connection.promise().query(sql, (err, response) => {
+        if (err) throw err;
+        response.forEach((role) => {console.log(role.title)})
+    });
+};
+
+// -------------- Add Role --------------
+
+//  -------------- Update Role --------------
+
+// -------------- Delete Role --------------
+
+// -------------- View All Departments --------------
+
+// -------------- Add Department --------------
+
+// -------------- Update Department --------------
+
+// -------------- Delete Departemnt --------------
 
     {
         type: "input",
