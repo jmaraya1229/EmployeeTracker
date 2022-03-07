@@ -4,10 +4,10 @@ require("dotenv").config();
 
 const connection = mysql.createConnection({
     host: 'localhost',
-    PORT: 3001,
     user: 'root',
     password: process.env.MYSQL_PW,
-    database: 'work_db'
+    database: 'work_db',
+    port: 3001
 });
 
-module.export = connection
+module.export = connection;
