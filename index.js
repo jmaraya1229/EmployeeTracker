@@ -1,18 +1,15 @@
+const connection = require ("./config/connection");
 const inquirer = require("inquirer");
 const conTable = require("console.table");
-const mysql = require("mysql2");
-require("dotenv").config();
 
-const connection = mysql.createConnection({
-    host: 'localhost',
-    PORT: 3001,
-    user: 'root',
-    password: process.env.MYSQL_PW,
-    database: 'work_db'
+connection.connect((error) => {
+    if (error) throw error;
+    promptQ(); 
 });
 
-const questions = [
-    {
+const promptQ = () => {
+    inquirer.prompt([
+        {
         type: "list",
         name: "options",
         message: "What would you like to do?",
@@ -20,12 +17,65 @@ const questions = [
             "View All Employess", 
             "Add Employee", 
             "Update Employee Role", 
+            "Delete Employee",
+            "View All Roles",
             "Add Role", 
+            "Update Role",
+            "Delete Role",
             "View All Departments", 
             "Add Department", 
-            "Delete Department, Role, or Employee", 
-            "Quit"]
-    },
+            "Delete Department",
+            "Quit"
+            ]
+        },
+    ])
+    .then((answers) => {
+        const {choices} = answers;
+
+        if (choices === "View All Employees") {
+            viewAllEmployees();
+        }
+
+        If (choices === "Add Employee") {
+            addEmployee();
+        }
+
+        if (choices === "Update Employee Role") {
+            updateEmployeeRole();
+        }
+
+        if (choices === "Delete Employee") {
+            deleteEmployee();
+        }
+        if (choices === "View All Roles") {
+            viewAllRoles();
+        }
+        if (choices === "Add Role") {
+            addRole();
+        }
+        if (choices === "Update Role") {
+            updateRole();
+        }
+        if (choices === "Delete Role") {
+            deleteRole();
+        }
+        if (choices === "View All Departments") {
+            viewAllDepartment();
+        }
+        if (choices === "Add Department") {
+            addDepartment();
+        }
+        if (choices === "Update Department") {
+            updateDepartment();
+        }
+        if (choices === "Delete Department") {
+            deleteDepartment();
+        }
+        if (choices === "Exit") {
+            connection.end();
+        }
+    })
+};
     {
         type: "input",
         name: "add-employee",
