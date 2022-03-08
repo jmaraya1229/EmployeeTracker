@@ -17,14 +17,16 @@ const promptQ = () => {
         message: "What would you like to do?",
         choices: [
             "View All Employess", 
+            "View Employees By Manager",
+            "View Employees By Department",
+            "View Employees By Department Budget",
+            "View All Roles",
+            "View All Departments", 
             "Add Employee", 
             "Update Employee Role", 
             "Delete Employee",
-            "View All Roles",
             "Add Role", 
-            "Update Role",
             "Delete Role",
-            "View All Departments", 
             "Add Department", 
             "Delete Department",
             "Quit"
@@ -38,7 +40,27 @@ const promptQ = () => {
             viewAllEmployees();
         }
 
-        If (choices === "Add Employee"); { 
+        if (choices === "View Employees By Manager") {
+            viewAllByManager();
+        }
+
+        if (choices === "View Employees By Department") {
+            viewAllByDept();
+        }
+
+        if (choices === "View Employees By Department Budget") {
+            viewAllByBudget();
+        }
+
+        if (choices === "View All Roles") {
+            viewAllRoles();
+        }
+
+        if (choices === "View All Departments") {
+            viewAllDepartments();
+        }
+
+        if (choices === "Add Employee") {
             addEmployee();
         }
 
@@ -49,27 +71,19 @@ const promptQ = () => {
         if (choices === "Delete Employee") {
             deleteEmployee();
         }
-        if (choices === "View All Roles") {
-            viewAllRoles();
-        }
+
         if (choices === "Add Role") {
             addRole();
         }
-        if (choices === "Update Employee Role") {
-            updateEmployeeRole();
-        }
+
         if (choices === "Delete Role") {
             deleteRole();
         }
-        if (choices === "View All Departments") {
-            viewAllDepartments();
-        }
+
         if (choices === "Add Department") {
             addDepartment();
         }
-        if (choices === "Update Department") {
-            updateDepartment();
-        }
+
         if (choices === "Delete Department") {
             deleteDepartment();
         }
@@ -100,7 +114,36 @@ const viewAllEmployees = () => {
     })
 };
 
-// --------------Add Employee --------------
+// -------------- View Employees By Manager --------------
+
+// -------------- View Employees By Department --------------
+
+// -------------- View Employees By Department Budget --------------
+
+// -------------- View All Roles --------------
+const viewAllRoles = () => {
+    let sql = 
+    `SELECT role.id, role.title, department.department_name AS department
+    FROM role
+    INNER JOIN department ON role.department_id = department.id`;
+    connection.promise().query(sql, (err, response) => {
+        if (err) throw err;
+        response.forEach((role) => {console.log(role.title)})
+        promptQ();
+    });
+};
+
+// -------------- View All Departments --------------
+const viewAllDepartments = () => {
+    let sql = 
+    `SELECT department.id AS id, department.department_name AS department FROM department`;
+    connection.promise().query(sql, (err, response) => {
+        if (err) throw err;
+        promptQ();
+    });
+};
+
+// -------------- Add Employee --------------
 const addEmployee = () => {
     inquirer.prompt([
         {
@@ -264,19 +307,6 @@ const deleteEmployee = () => {
       });
 };
 
-// -------------- View All Roles --------------
-const viewAllRoles = () => {
-    let sql = 
-    `SELECT role.id, role.title, department.department_name AS department
-    FROM role
-    INNER JOIN department ON role.department_id = department.id`;
-    connection.promise().query(sql, (err, response) => {
-        if (err) throw err;
-        response.forEach((role) => {console.log(role.title)})
-        promptQ();
-    });
-};
-
 // -------------- Add Role --------------
 const addRole = () => {
     const sql = 'SELECT * FROM department'
@@ -336,8 +366,6 @@ const addRole = () => {
       });
     };
 
-//  -------------- Update Role --------------
-
 // -------------- Delete Role --------------
 const deleteRole = () => {
     let sql = `SELECT role.id, role.title FROM role`;
@@ -374,16 +402,6 @@ const deleteRole = () => {
     });
   };
 
-// -------------- View All Departments --------------
-const viewAllDepartments = () => {
-    let sql = 
-    `SELECT department.id AS id, department.department_name AS department FROM department`;
-    connection.promise().query(sql, (err, response) => {
-        if (err) throw err;
-        promptQ();
-    });
-};
-
 // -------------- Add Department --------------
 const addDepartment = () => {
     inquirer
@@ -404,8 +422,6 @@ const addDepartment = () => {
         });
       });
 };
-
-// -------------- Update Department --------------
 
 // -------------- Delete Departemnt --------------
 const deleteDepartment = () => {
