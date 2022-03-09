@@ -35,4 +35,3 @@ Once the user is finished with the database, the user can select `Quit` to exit 
 * MySQL2
 * Consol Table
 * dotenv
-
