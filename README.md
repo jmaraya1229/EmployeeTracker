@@ -28,7 +28,8 @@ The user will be able to add an employee, a role, and a department by selecting 
 Once the user is finished with the database, the user can select `Quit` to exit the application. 
 
 ### Usage Walkthrough
-[Walkthrough GIF]()
+![GIF](/EmployeeTrackerGIF.gif)
+[Walkthrough Video Link](https://drive.google.com/file/d/1_1A97OvNF1FQ9d-ZrBiRXM4_6rb8FcHX/view)
 
 ## Technologies Used
 * Inquirer

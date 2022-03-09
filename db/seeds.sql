@@ -17,8 +17,8 @@ VALUES ("Engineer", 90000, 1),
 INSERT INTO employee(first_name, last_name, role_id, manager_id)
 VALUES ("Edward", "Elric", 1, 2), 
 ("Roy", "Mustang", 2, 0), 
-("Alphonse", "Elric", 7, 0),
-("May", "Chang", 3, 0),
-("Ling", "Yao", 4, 3),
-("Winry", "Rockbell", 5, 0), 
-("Nina", "Tucker", 6, 5);
+("Winry", "Rockbell", 3, 0), 
+("Nina", "Tucker", 4, 3),
+("Ling", "Yao", 5, 0),
+("May", "Chang", 6, 5),
+("Alphonse", "Elric", 7, 0)

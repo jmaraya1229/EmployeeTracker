@@ -176,7 +176,7 @@ const addEmployee = () => {
             connection.query(sql, employeeName, (err) => {
               if (err) throw err;
               console.log(`${employeeName[0]} ${employeeName[1]} has been added!`)
-              promptQ();
+              viewAllEmployees();
               });
           });
         });
@@ -239,7 +239,7 @@ const updateEmployeeRole = () => {
           connection.query(sqlUpdate, [newTitleId, employeeId], (error) => {
               if (error) throw error;
               console.log(`Updated ${answer.chosenEmployee}!`)
-              promptQ();
+              viewAllEmployees();
             }
           );
         });
@@ -280,7 +280,7 @@ const deleteEmployee = () => {
             connection.query(sql, [employeeId], (error) => {
               if (error) throw error;
               console.log(`${answer.chosenEmployee} has been deleted!`)
-              promptQ();
+              viewAllEmployees();
             });
           });
       });
@@ -325,7 +325,7 @@ const addRole = () => {
         connection.query(sql, addedRole, (error) => {
           if (error) throw error;
           console.log(`${addedRole[0]} has been added!`)
-          promptQ();
+          viewAllRoles();
         });
       });
   });
@@ -361,7 +361,7 @@ const deleteRole = () => {
       connection.query(sql, [roleId], (error) => {
         if (error) throw error;
         console.log(`${answer.chosenRole} has been deleted!`)
-        promptQ();
+        viewAllRoles();
       });
     });
   });
@@ -381,7 +381,7 @@ const addDepartment = () => {
         connection.query(sql, answer.newDepartment, (error, response) => {
           if (error) throw error;
           console.log(`${answer.newDepartment} department has been added!`)
-          promptQ();
+          viewAllDepartments();
         });
     });
 };
@@ -415,7 +415,7 @@ const deleteDepartment = () => {
       connection.query(sql, [departmentId], (error) => {
         if (error) throw error;
         console.log(`${answer.chosenDept} department has been deleted!`)
-        promptQ();
+        viewAllDepartments();
       });
     });
   });
