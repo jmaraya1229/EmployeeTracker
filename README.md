@@ -1,7 +1,7 @@
 # Employee Tracker
 
 ## Description
-The following application will allow the user to manage an employee database using Node.js, Inquirer, and MyQL. The user will be able to view all of their employees, and add/delete an employee, role, or department.
+The following application will allow the user to manage an employee database using Node.js, Inquirer, and MySQL. The user will be able to view all of their employees, and add/delete an employee, role, or department.
 
 ## Table of Contents
 * [Installation](#installation)
